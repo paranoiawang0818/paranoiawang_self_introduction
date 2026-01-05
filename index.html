@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王高 / Paranoia小妄</title>
+    <style>
+        /* =========================================
+           王高个人主页 v11.0 (最终完成版)
+           更新日志：背景升级为 "深邃数学网格" 纹理
+           ========================================= */
+
+        :root {
+            /* 注意：主背景色现在在 body 里定义了，这里不再需要 --bg-color */
+            --card-bg: #1E1E1E;
+            --item-card-bg: #252525;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --accent-yellow: #D9A345;
+            --divider-color: #2F2F2F;
+            --btn-grad-phone: linear-gradient(135deg, #2563eb, #06b6d4);
+            --btn-grad-wechat: linear-gradient(135deg, #7c3aed, #db2777);
+            --bubble-bg: #2A2A35;
+            --bubble-highlight-bg: rgba(217, 163, 69, 0.08);
+            --bubble-highlight-border: rgba(217, 163, 69, 0.4);
+        }
+
+        body {
+            /* === 核心更新：数学网格背景 === */
+            background-color: #121212; /* 基础底色 */
+            /* 使用 CSS 绘制极细微的透明网格线 */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px; /* 网格大小 */
+            background-attachment: fixed; /* 背景固定不随滚动移动 */
+            /* ========================== */
+            
+            color: var(--text-primary);
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container { max-width: 680px; margin: 0 auto; overflow: hidden; }
+
+        /* === 头部卡片 === */
+        .header-card { background-color: var(--card-bg); border-radius: 24px; padding: 35px; margin-bottom: 40px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); text-align: left; position: relative; z-index: 1; /* 确保卡片在网格背景之上 */ }
+        .main-title { font-size: 2rem; font-weight: 700; margin: 0 0 15px 0; line-height: 1.2; letter-spacing: -0.5px; }
+        .bio-text { font-size: 1rem; color: var(--text-secondary); margin-bottom: 6px; font-weight: 500; display: flex; align-items: center; }
+        .tags-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; margin-bottom: 30px; }
+        .pill-tag { background-color: #2A2A35; color: #E0E0E0; padding: 8px 14px; border-radius: 50px; font-size: 0.9rem; font-weight: 500; transition: transform 0.2s; }
+        .pill-tag span { margin-right: 6px; }
+        .pill-tag:hover { transform: translateY(-2px); background-color: #353545; }
+        .button-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
+        .big-btn { display: flex; justify-content: center; align-items: center; padding: 14px 10px; border-radius: 12px; border: none; color: white; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2); width: 100%; box-sizing: border-box; text-decoration: none; }
+        .big-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+        .btn-phone { background: var(--btn-grad-phone); cursor: default; }
+        .btn-wechat { background: var(--btn-grad-wechat); cursor: pointer; }
+        #qr-area { display: none; margin-top: 20px; background: #fff; padding: 15px; border-radius: 12px; text-align: center; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+        #qr-area img { width: 100%; max-width: 200px; height: auto; }
+        .qr-text { color: #333; font-size: 0.85rem; margin-top: 8px; }
+
+        /* === 通用 Section 样式 === */
+        section { border-bottom: 1px solid var(--divider-color); padding-bottom: 30px; margin-bottom: 30px; position: relative; z-index: 1; }
+        section:last-child { border-bottom: none; }
+        h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--accent-yellow); }
+
+        /* === 服务卡片流 === */
+        .services-grid { display: flex; flex-direction: column; gap: 15px; }
+        .service-card { background-color: var(--item-card-bg); padding: 20px; border-radius: 16px; transition: background-color 0.2s; }
+        .service-card:hover { background-color: #2f2f2f; }
+        .card-header { display: flex; align-items: center; margin-bottom: 8px; }
+        .card-emoji { font-size: 1.4rem; margin-right: 12px; }
+        .card-title { font-size: 1.1rem; font-weight: 700; color: #FFFFFF; }
+        .card-desc { font-size: 0.95rem; color: var(--text-secondary); margin: 0; padding-left: 0; line-height: 1.5; }
+
+        /* === 滚动照片墙样式 === */
+        .marquee-container { overflow: hidden; position: relative; width: 100%; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+        .marquee-track { display: flex; gap: 15px; width: max-content; animation: scrollRight 30s linear infinite; }
+        .marquee-track:hover { animation-play-state: paused; }
+        .photo-item { position: relative; border-radius: 16px; overflow: hidden; width: 180px; height: 180px; flex-shrink: 0; }
+        .photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        @keyframes scrollRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+        /* === 聊天气泡风格 === */
+        .chat-container { display: flex; flex-direction: column; gap: 20px; }
+        .chat-row { display: flex; align-items: flex-start; gap: 15px; animation: slideIn 0.4s ease forwards; opacity: 0; transform: translateY(10px); }
+        .chat-row:nth-child(1) { animation-delay: 0.1s; }
+        .chat-row:nth-child(2) { animation-delay: 0.2s; }
+        .chat-row:nth-child(3) { animation-delay: 0.3s; }
+        @keyframes slideIn { to { opacity: 1; transform: translateY(0); } }
+        .chat-avatar { width: 42px; height: 42px; background-color: var(--item-card-bg); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.4rem; flex-shrink: 0; }
+        .chat-bubble { background-color: var(--bubble-bg); padding: 15px 20px; border-radius: 4px 20px 20px 20px; color: #E0E0E0; font-size: 1rem; line-height: 1.6; max-width: 90%; position: relative; }
+        .chat-label { display: block; font-size: 0.85rem; font-weight: bold; color: #777; margin-bottom: 4px; }
+        .promise-bubble { background-color: var(--bubble-highlight-bg); border: 1px solid var(--bubble-highlight-border); color: #FFF; }
+        .promise-bubble .chat-label { color: var(--accent-yellow); }
+
+        @media (max-width: 600px) {
+            .button-group { grid-template-columns: 1fr; }
+            .main-title { font-size: 1.6rem; }
+            .chat-bubble { font-size: 0.95rem; }
+            .photo-item { width: 150px; height: 150px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-card">
+        <h1 class="main-title">王高 / Paranoia小妄</h1>
+        <div class="bio-text">👋 XJTLU 大一 | Math × CS | 常驻长三角</div>
+        <div class="bio-text">📕 不断学习 不断成长 快乐的小儿郎</div>
+        <div class="tags-container">
+            <div class="pill-tag"><span>🗣️</span>雅思裸考 6 分</div>
+            <div class="pill-tag"><span>💯</span>高考英语 130+</div>
+            <div class="pill-tag"><span>📈</span>数学提分 70+</div>
+            <div class="pill-tag"><span>🥇</span>绩点前 3%</div>
+            <div class="pill-tag"><span>📅</span>组织活动 7 次</div>
+            <div class="pill-tag"><span>🎤</span>公开演讲 2 次</div>
+            <div class="pill-tag"><span>🤝</span>500 强 CEO 交流</div>
+            <div class="pill-tag"><span>📄</span>1 篇论文投稿中</div>
+            <div class="pill-tag"><span>📺</span>2K+ 粉丝</div>
+            <div class="pill-tag"><span>📍</span>苏州人</div>
+            <div class="pill-tag"><span>🧑‍🏫</span>ENFJ-T</div>
+            <div class="pill-tag"><span>🦁</span>07 狮子</div>
+        </div>
+        <div class="button-group">
+            <div class="big-btn btn-phone">📞 电话：15162452007</div>
+            <button id="wechat-btn" class="big-btn btn-wechat" onclick="toggleQR()">💬 微信二维码</button>
+        </div>
+        <div id="qr-area">
+            <img src="qrcode.jpg" alt="微信二维码">
+            <div class="qr-text">点击上方紫色按钮可收起</div>
+        </div>
+    </div>
+
+    <section>
+        <h2>✏️ 或许可以提供给你的</h2>
+        <div class="services-grid">
+            <div class="service-card"><div class="card-header"><span class="card-emoji">💆</span><span class="card-title">不良情绪疏导</span></div><p class="card-desc">压力焦虑结构化拆解，提供可实操落地方法。</p></div>
+            <div class="service-card"><div class="card-header"><span class="card-emoji">📚</span><span class="card-title">学科问题咨询</span></div><p class="card-desc">微积分 / 线性代数 / 英语口语，通透讲解。</p></div>
+            <div class="service-card"><div class="card-header"><span class="card-emoji">🤖</span><span class="card-title">AI 问题咨询</span></div><p class="card-desc">效率类 AI 工具搭配，提示词 (Prompt) 与工作流指导。</p></div>
+            <div class="service-card"><div class="card-header"><span class="card-emoji">⚙️</span><span class="card-title">人生系统搭建</span></div><p class="card-desc">基于 Notion 的人生管理系统重构与优化。</p></div>
+            <div class="service-card"><div class="card-header"><span class="card-emoji">🤝</span><span class="card-title">各领域人脉对接</span></div><p class="card-desc">链接校内外优秀资源，与全球 500 强 CEO 交流经验分享。</p></div>
+        </div>
+    </section>
+
+    <section>
+        <h2>😎 一些生活碎片</h2>
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <div class="photo-item"><img src="photo1.jpg" alt="生活照1"></div>
+                <div class="photo-item"><img src="photo2.jpg" alt="生活照2"></div>
+                <div class="photo-item"><img src="photo3.jpg" alt="生活照3"></div>
+                <div class="photo-item"><img src="photo4.jpg" alt="生活照4"></div>
+                <div class="photo-item"><img src="photo5.jpg" alt="生活照5"></div>
+                <div class="photo-item"><img src="photo6.jpg" alt="生活照6"></div>
+                <div class="photo-item"><img src="photo1.jpg" alt="生活照1-copy"></div>
+                <div class="photo-item"><img src="photo2.jpg" alt="生活照2-copy"></div>
+                <div class="photo-item"><img src="photo3.jpg" alt="生活照3-copy"></div>
+                <div class="photo-item"><img src="photo4.jpg" alt="生活照4-copy"></div>
+                <div class="photo-item"><img src="photo5.jpg" alt="生活照5-copy"></div>
+                <div class="photo-item"><img src="photo6.jpg" alt="生活照6-copy"></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>🤔 想从大家身上学习的东西</h2>
+        <div class="chat-container">
+            <div class="chat-row"><div class="chat-avatar">❓</div><div class="chat-bubble"><span class="chat-label">想向您请教</span>情绪控制 / 持续自律 / 深度阅读 / 高效学习方法</div></div>
+            <div class="chat-row"><div class="chat-avatar">🔗</div><div class="chat-bubble"><span class="chat-label">我希望结识</span>同样学 Math/CS，对于财富、个人 IP、AI 技术、个人成长等感兴趣的小伙伴</div></div>
+            <div class="chat-row"><div class="chat-avatar">🤙</div><div class="chat-bubble promise-bubble"><span class="chat-label">和大家约定</span>欢迎当面指出我的问题，我会认真听，也会改！</div></div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function toggleQR() {
+        var qrArea = document.getElementById("qr-area");
+        qrArea.style.display = qrArea.style.display === "block" ? "none" : "block";
+    }
+</script>
+</body>
+</html>
