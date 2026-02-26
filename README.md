@@ -44,7 +44,7 @@
 ## 📬 找到我 / Contact Me
 - **Phone:** 15162452007
 - **WeChat:** [扫码联系我](https://paranoiawang0818.github.io/paranoiawang_self_introduction/) (见网页端)
-- **Mail:** paranoiawang0818@qq.com
+- **Mail:** paranoiawang0818@gmail.com
 - **Location:** 常驻长三角 · 苏州
 
 ---
