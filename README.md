@@ -9,12 +9,12 @@
 
 ## 🧑‍💻 关于我 / About Me
 **不断学习，不断成长，快乐的小儿郎。**
-目前就读于 **西交利物浦大学 (XJTLU)** 大一，深耕 **Math × CS** 领域。我的目标是通往 **宾夕法尼亚大学 (UPenn)**，正在构建属于自己的数字化人生系统。
+目前就读于 **西交利物浦大学 (XJTLU)** 大一，深耕 **Math × CS** 领域。我的目标是通往 **宾夕法尼亚大学 (UPenn)** ，未来在硅谷开创一人公司，也正在构建属于自己的数字化人生系统。
 
 - 🦁 **07 狮子座 / INFJ-T**
 - 📈 **学术：** 学院绩点前 3%，2 篇论文投稿中
 - 🗣️ **语言：** 雅思裸考 6 分 / 高考英语 130+
-- 📱 **影响力：** 视频号 2K+ 粉丝，专注个人 IP 与 AI 探索
+- 📱 **影响力：** 视频号 2700+ 粉丝，专注个人 IP 与 AI 探索
 
 ---
 
@@ -33,16 +33,18 @@
 ---
 
 ## 🧩 模块概览 / Portfolio Sections
-1. **Personal Profile:** 标签化展示个人硬核实力。
+1. **Personal Profile:** 标签化展示个人实力。
 2. **Services:** 提供不良情绪疏导、AI 问题咨询、人生系统搭建等服务。
 3. **Life Fragments:** 生活碎片展示，通过无限滚动照片墙呈现。
 4. **Connect:** 寻求高效学习方法与 Math/CS 领域志同道合的小伙伴。
+5. **Projects:** 展示Github的制作项目。
 
 ---
 
 ## 📬 找到我 / Contact Me
 - **Phone:** 15162452007
 - **WeChat:** [扫码联系我](https://paranoiawang0818.github.io/paranoiawang_self_introduction/) (见网页端)
+- **Mail:** paranoiawang0818@qq.com
 - **Location:** 常驻长三角 · 苏州
 
 ---
