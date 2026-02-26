@@ -122,20 +122,10 @@
         .particle:nth-child(5) { background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); animation-delay: 8s; left: 80%; }
 
         @keyframes float {
-            0% { 
-                transform: translateY(100vh) scale(0); 
-                opacity: 0; 
-            }
-            10% { 
-                opacity: 1; 
-            }
-            90% { 
-                opacity: 1; 
-            }
-            100% { 
-                transform: translateY(-100vh) scale(1); 
-                opacity: 0; 
-            }
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
         }
 
         /* === 容器 === */
@@ -342,20 +332,9 @@
             background: rgba(120, 220, 232, 0.05);
         }
 
-        .contact-icon {
-            font-size: 1.2rem;
-        }
-
-        .contact-text {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-        }
-
-        .contact-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            display: block;
-        }
+        .contact-icon { font-size: 1.2rem; }
+        .contact-text { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
+        .contact-label { font-size: 0.7rem; color: var(--text-muted); display: block; }
 
         #qr-area {
             display: none;
@@ -383,9 +362,7 @@
         }
 
         /* === Services Section === */
-        .section {
-            margin-bottom: 100px;
-        }
+        .section { margin-bottom: 100px; }
 
         .section-header {
             display: flex;
@@ -395,23 +372,9 @@
             opacity: 0;
         }
 
-        .section-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--neon-pink);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 600;
-            letter-spacing: -1px;
-        }
-
-        .section-line {
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, var(--divider-color), transparent);
-        }
+        .section-number { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--neon-pink); }
+        .section-title { font-size: 2rem; font-weight: 600; letter-spacing: -1px; }
+        .section-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--divider-color), transparent); }
 
         /* === 服务卡片 - 交错布局 === */
         .services-grid {
@@ -457,30 +420,11 @@
             border-color: rgba(255, 255, 255, 0.1);
             box-shadow: var(--shadow-glow-cyan);
         }
+        .service-card:hover::before { height: 100%; }
 
-        .service-card:hover::before {
-            height: 100%;
-        }
-
-        .card-emoji {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .card-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--text-primary);
-        }
-
-        .card-desc {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
+        .card-emoji { font-size: 2rem; margin-bottom: 15px; display: block; }
+        .card-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: var(--text-primary); }
+        .card-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
 
         /* === 照片墙 - 无限滚动 === */
         .marquee-container {
@@ -488,255 +432,85 @@
             position: relative;
             padding: 20px 0;
         }
-
-        .marquee-container::before,
-        .marquee-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 150px;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
+        .marquee-container::before, .marquee-container::after {
+            content: ''; position: absolute; top: 0; width: 150px; height: 100%; z-index: 2; pointer-events: none;
         }
-
-        .marquee-container::before {
-            left: 0;
-            background: linear-gradient(90deg, var(--bg-deep), transparent);
-        }
-
-        .marquee-container::after {
-            right: 0;
-            background: linear-gradient(-90deg, var(--bg-deep), transparent);
-        }
+        .marquee-container::before { left: 0; background: linear-gradient(90deg, var(--bg-deep), transparent); }
+        .marquee-container::after { right: 0; background: linear-gradient(-90deg, var(--bg-deep), transparent); }
 
         .marquee-track {
-            display: flex;
-            gap: 20px;
-            width: max-content;
-            animation: scrollLeft 40s linear infinite;
+            display: flex; gap: 20px; width: max-content; animation: scrollLeft 40s linear infinite;
         }
-
-        .marquee-track:hover {
-            animation-play-state: paused;
-        }
+        .marquee-track:hover { animation-play-state: paused; }
 
         .photo-item {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            width: 280px;
-            height: 280px;
-            flex-shrink: 0;
-            filter: grayscale(30%);
-            transition: all 0.4s ease;
+            position: relative; border-radius: 8px; overflow: hidden; width: 280px; height: 280px; flex-shrink: 0; filter: grayscale(30%); transition: all 0.4s ease;
         }
+        .photo-item:hover { filter: grayscale(0%); transform: scale(1.05); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
+        .photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        .photo-item:hover {
-            filter: grayscale(0%);
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .photo-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        @keyframes scrollLeft {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
+        @keyframes scrollLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* === 对话区域 === */
-        .chat-container {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            max-width: 800px;
-        }
-
-        .chat-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            opacity: 0;
-            animation: slideRight 0.6s ease forwards;
-        }
-
+        .chat-container { display: flex; flex-direction: column; gap: 25px; max-width: 800px; }
+        .chat-row { display: flex; align-items: flex-start; gap: 20px; opacity: 0; animation: slideRight 0.6s ease forwards; }
         .chat-row:nth-child(1) { animation-delay: 0.1s; }
         .chat-row:nth-child(2) { animation-delay: 0.3s; }
         .chat-row:nth-child(3) { animation-delay: 0.5s; }
 
         .chat-avatar {
-            width: 50px;
-            height: 50px;
-            background: var(--bg-card);
-            border: 1px solid rgba(120, 220, 232, 0.2);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
+            width: 50px; height: 50px; background: var(--bg-card); border: 1px solid rgba(120, 220, 232, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; flex-shrink: 0;
         }
-
         .chat-bubble {
-            background: var(--bg-card);
-            padding: 25px 30px;
-            border-radius: 4px 24px 24px 24px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            flex: 1;
-            position: relative;
+            background: var(--bg-card); padding: 25px 30px; border-radius: 4px 24px 24px 24px; border: 1px solid rgba(255, 255, 255, 0.05); flex: 1; position: relative;
         }
-
         .chat-bubble::before {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 20px;
-            width: 10px;
-            height: 10px;
-            background: var(--bg-card);
-            border-left: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transform: rotate(45deg);
+            content: ''; position: absolute; left: -6px; top: 20px; width: 10px; height: 10px; background: var(--bg-card); border-left: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); transform: rotate(45deg);
         }
 
-        .chat-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--neon-cyan);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            display: block;
-        }
+        .chat-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--neon-cyan); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; }
+        .chat-text { font-size: 1rem; color: var(--text-primary); line-height: 1.7; }
 
-        .chat-text {
-            font-size: 1rem;
-            color: var(--text-primary);
-            line-height: 1.7;
-        }
-
-        .promise-bubble {
-            border-color: rgba(169, 220, 118, 0.3);
-            background: linear-gradient(135deg, var(--bg-card), rgba(169, 220, 118, 0.05));
-        }
-
-        .promise-bubble .chat-label {
-            color: var(--neon-green);
-        }
+        .promise-bubble { border-color: rgba(169, 220, 118, 0.3); background: linear-gradient(135deg, var(--bg-card), rgba(169, 220, 118, 0.05)); }
+        .promise-bubble .chat-label { color: var(--neon-green); }
 
         /* === Footer === */
-        .footer {
-            text-align: center;
-            padding: 60px 0 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 100px;
-        }
+        .footer { text-align: center; padding: 60px 0 40px; border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: 100px; }
+        .footer-text { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); }
+        .footer-heart { color: var(--neon-pink); animation: heartbeat 1.5s infinite; }
 
-        .footer-text {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .footer-heart {
-            color: var(--neon-pink);
-            animation: heartbeat 1.5s infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        /* === 动画定义 === */
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideLeft {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideRight {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideLeft { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideRight { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* === 滚动触发动画 === */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .scroll-reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
 
         /* === 响应式 === */
         @media (max-width: 900px) {
-            .hero {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .service-card:nth-child(n) {
-                grid-column: 1 / -1;
-            }
-
-            .photo-item {
-                width: 220px;
-                height: 220px;
-            }
+            .hero { grid-template-columns: 1fr; gap: 40px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card:nth-child(n) { grid-column: 1 / -1; }
+            .photo-item { width: 220px; height: 220px; }
         }
-
         @media (max-width: 600px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .chat-row {
-                flex-direction: column;
-            }
-
-            .chat-bubble::before {
-                display: none;
-            }
+            .hero-title { font-size: 2rem; }
+            .chat-row { flex-direction: column; }
+            .chat-bubble::before { display: none; }
         }
     </style>
 </head>
 <body>
-    <!-- 背景层 -->
     <div class="bg-layers">
         <div class="bg-layer-1"></div>
         <div class="bg-grid"></div>
         <div class="bg-noise"></div>
     </div>
 
-    <!-- 浮动粒子 -->
     <div class="particles">
         <div class="particle" style="left: 10%;"></div>
         <div class="particle" style="left: 30%;"></div>
@@ -746,7 +520,6 @@
     </div>
 
     <div class="container">
-        <!-- 导航 -->
         <nav class="nav-bar">
             <div class="nav-logo">Paranoia.wang</div>
             <div class="nav-status">
@@ -755,7 +528,6 @@
             </div>
         </nav>
 
-        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
                 <div class="hero-label">Personal Profile</div>
@@ -769,15 +541,15 @@
                 </p>
                 
                 <div class="tags-cloud">
-                    <span class="tag-item">🗣️ 雅思裸考 6 分</span>
-                    <span class="tag-item">💯 高考英语 130+</span>
-                    <span class="tag-item">📈 高二数学提分 70+</span>
-                    <span class="tag-item">🥇 学院绩点前 3%</span>
-                    <span class="tag-item">📅 校内组织活动 7 次</span>
-                    <span class="tag-item">🎤 校内公开演讲 2 次</span>
-                    <span class="tag-item">🤝 积极与 500 强 CEO 交流</span>
-                    <span class="tag-item">📄 2 篇论文投稿中</span>
-                    <span class="tag-item">📺 视频号 2K+ 粉丝</span>
+                    <span class="tag-item">🗣️ 雅思裸考 <span class="counter" data-target="6">0</span> 分</span>
+                    <span class="tag-item">💯 高考英语 <span class="counter" data-target="130">0</span>+</span>
+                    <span class="tag-item">📈 高二数学提分 <span class="counter" data-target="70">0</span>+</span>
+                    <span class="tag-item">🥇 学院绩点前 <span class="counter" data-target="3">0</span>%</span>
+                    <span class="tag-item">📅 校内组织活动 <span class="counter" data-target="7">0</span> 次</span>
+                    <span class="tag-item">🎤 校内公开演讲 <span class="counter" data-target="2">0</span> 次</span>
+                    <span class="tag-item">🤝 积极与 <span class="counter" data-target="500">0</span> 强 CEO 交流</span>
+                    <span class="tag-item">📄 <span class="counter" data-target="2">0</span> 篇论文投稿中</span>
+                    <span class="tag-item">📺 视频号 <span class="counter" data-target="2700">0</span>+ 粉丝</span>
                     <span class="tag-item">📍 苏州人</span>
                     <span class="tag-item">🧑‍🏫 INFJ-T</span>
                     <span class="tag-item">🦁 07 狮子</span>
@@ -800,6 +572,28 @@
                         <span class="contact-text">点击展开二维码</span>
                     </div>
                 </div>
+                <div class="contact-item" onclick="window.location.href='mailto:paranoiawang0818@gmail.com'">
+                    <span class="contact-icon">📧</span>
+                    <div>
+                        <span class="contact-label">Email</span>
+                        <span class="contact-text">paranoiawang0818@gmail.com</span>
+                    </div>
+                </div>
+                <div class="contact-item" onclick="window.open('https://www.youtube.com/@cowardP', '_blank')">
+                    <span class="contact-icon">▶️</span>
+                    <div>
+                        <span class="contact-label">YouTube</span>
+                        <span class="contact-text">@cowardP</span>
+                    </div>
+                </div>
+                <div class="contact-item" onclick="window.open('https://x.com/wnggo18915', '_blank')">
+                    <span class="contact-icon">𝕏</span>
+                    <div>
+                        <span class="contact-label">X</span>
+                        <span class="contact-text">@wnggo18915</span>
+                    </div>
+                </div>
+
                 <div id="qr-area">
                     <img src="qrcode.jpg" alt="WeChat QR Code">
                     <div class="qr-text">点击上方按钮可收起</div>
@@ -807,7 +601,6 @@
             </div>
         </section>
 
-        <!-- Services Section -->
         <section class="section">
             <div class="section-header scroll-reveal">
                 <span class="section-number">01</span>
@@ -844,7 +637,6 @@
             </div>
         </section>
 
-        <!-- Photos Section -->
         <section class="section">
             <div class="section-header scroll-reveal">
                 <span class="section-number">02</span>
@@ -870,7 +662,6 @@
             </div>
         </section>
 
-        <!-- Connect Section -->
         <section class="section">
             <div class="section-header scroll-reveal">
                 <span class="section-number">03</span>
@@ -897,13 +688,35 @@
                     <div class="chat-avatar">🤙</div>
                     <div class="chat-bubble promise-bubble">
                         <span class="chat-label">和大家约定</span>
-                        <span class="chat-text">欢迎指出我的问题，我会认真听，也会调整！</span>
+                        <span class="chat-text">欢迎当面指出我的问题，我会认真听，也会改！</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
+        <section class="section">
+            <div class="section-header scroll-reveal">
+                <span class="section-number">04</span>
+                <h2 class="section-title">GitHub 项目</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="services-grid">
+                <a href="https://github.com/paranoiawang0818/ai-news-collector" target="_blank" class="service-card" style="text-decoration: none; cursor: pointer;">
+                    <span class="card-emoji">🤖</span>
+                    <h3 class="card-title">AI新闻推送</h3>
+                    <p class="card-desc">自动聚合与推送最新 AI 行业资讯的自动化脚本工具。</p>
+                    <div style="margin-top: 15px; font-size: 0.8rem; color: var(--neon-cyan); font-family: 'JetBrains Mono', monospace;">// 点击前往 GitHub 查看</div>
+                </a>
+                <a href="https://github.com/paranoiawang0818/newyear-countdown" target="_blank" class="service-card" style="text-decoration: none; cursor: pointer;">
+                    <span class="card-emoji">🎆</span>
+                    <h3 class="card-title">新年倒计时</h3>
+                    <p class="card-desc">一个极具极客风格的新年倒计时网页项目，支持动态视觉效果。</p>
+                    <div style="margin-top: 15px; font-size: 0.8rem; color: var(--neon-pink); font-family: 'JetBrains Mono', monospace;">// 点击前往 GitHub 查看</div>
+                </a>
+            </div>
+        </section>
+
         <footer class="footer">
             <p class="footer-text">
                 Designed with <span class="footer-heart">♥</span> by Paranoia小妄
@@ -918,7 +731,7 @@
             qrArea.style.display = qrArea.style.display === "block" ? "none" : "block";
         }
 
-        // 滚动触发动画
+        // 滚动触发基础动画
         const observerOptions = {
             threshold: 0.1,
             rootMargin: "0px 0px -50px 0px"
@@ -944,7 +757,50 @@
             document.querySelector('.bg-layer-1').style.transform = 
                 `translate(${x * 20}px, ${y * 20}px)`;
         });
+
+        // --- 新增：数字平滑滚动特效 ---
+        const countersObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.counter');
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const duration = 5000; // 动画持续时间5秒
+                        let startTimestamp = null;
+                        
+                        const step = (timestamp) => {
+                            if (!startTimestamp) startTimestamp = timestamp;
+                            // 计算进度百分比，上限为1
+                            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                            // 5次方缓动函数，呈现先快后慢的高级顿挫感
+                            const easeOut = 1 - Math.pow(1 - progress, 2);
+                            let current = Math.floor(easeOut * target);
+                            
+                            // 针对07特殊处理补零
+                            if (counter.classList.contains('pad-zero')) {
+                                counter.innerText = current < 10 ? '0' + current : current;
+                            } else {
+                                counter.innerText = current;
+                            }
+                            
+                            if (progress < 1) {
+                                window.requestAnimationFrame(step);
+                            } else {
+                                // 最终兜底
+                                counter.innerText = counter.classList.contains('pad-zero') && target < 10 ? '0' + target : target;
+                            }
+                        };
+                        window.requestAnimationFrame(step);
+                    });
+                    // 执行一次后解除监听，避免重复触发消耗性能
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.tags-cloud').forEach(el => {
+            countersObserver.observe(el);
+        });
     </script>
 </body>
 </html>
-
