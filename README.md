@@ -1,9 +1,10 @@
-# 🌌 Paranoia.wang | 个人代码宇宙
+# 🌌 Paranoia小妄 | 网络代码宇宙
 
 <p align="center">
   <img src="https://img.shields.io/badge/Theme-Monokai_Pro-AB9DF2?style=for-the-badge&logo=visual-studio-code" />
   <img src="https://img.shields.io/badge/Status-Online-A9DC76?style=for-the-badge" />
   <img src="https://img.shields.io/badge/University-XJTLU-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/GPA-Top_3%25-FFD866?style=for-the-badge" />
 </p>
 
 ## 🧑‍💻 关于我 / About Me
